@@ -16,7 +16,7 @@ const loop=()=>{if(!SP.stream)return;an.getByteTimeDomainData(d);let s=0;for(con
 quiet=pct<6?quiet+1:0;lvlhint.textContent=pct>90?'Слишком громко — отодвиньтесь':quiet>90?'Говорите громче или ближе к микрофону':'';requestAnimationFrame(loop)};loop();return true}
 catch(e){phase.innerHTML='<b class=bad>Нет доступа к микрофону: '+(e.name=='NotAllowedError'?'разрешите микрофон в настройках сайта (значок 🔒 в адресной строке).':e.message)+'</b>';return false}}
 function stopMeter(){if(SP.stream){SP.stream.getTracks().forEach(t=>t.stop());SP.stream=null}try{SP.ac&&SP.ac.close()}catch(e){}if(window.lvl)lvl.style.width=0}
-function render(int){tr.innerHTML=[...SP.all,...SP.sess].map(s=>s.c<.75?`<span style="background:#fff3b0">${s.t}</span>`:s.t).join(' ')+' <span style="color:#999">'+(int||'')+'</span>'}
+function render(int){tr.innerHTML=[...SP.all,...SP.sess].map(s=>s.c<.75?`<span style="background:#fff3b0">${esc(s.t)}</span>`:esc(s.t)).join(' ')+' <span style="color:#999">'+(int||'')+'</span>'}
 async function record(sec){if(!hasSR()){phase.innerHTML='<b class=bad>Распознавание речи недоступно. Используйте Chrome/Edge или запасной режим ниже.</b>';return}
 if(!await meter())return;const SR=window.SpeechRecognition||window.webkitSpeechRecognition;SP.phase='rec';SP.all=[];SP.sess=[];SP.pauses=[];SP.t0=SP.last=Date.now();edit.innerHTML='';
 const start=()=>{const r=new SR();SP.rec=r;r.lang=SP.lang;r.continuous=true;r.interimResults=true;r.maxAlternatives=3;SP.sess=[];

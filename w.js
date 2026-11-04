@@ -44,7 +44,7 @@ const L=["Firstly,","Moreover,","On the other hand,"];ip=ip.map((p,i)=>i>0&&i<ip
 if(!intro&&!task1)ip.unshift('This question is a matter of considerable debate. This essay will examine both perspectives before presenting my own view.');
 if(!concl&&!task1)ip.push('In conclusion, while there are valid arguments on both sides, I firmly believe that a balanced approach would be the most beneficial solution.');
 // highlight
-let hl=text.replace(/[&<]/g,c=>c=='&'?'&amp;':'&lt;');errs.forEach(([e,why])=>{if(e.endsWith('…'))return;hl=hl.split(e).join(`<mark title="${why}">${e}</mark>`)});over.forEach(([w])=>hl=hl.replace(new RegExp('\\b('+w+')\\b(?![^<]*>)','gi'),'<u style="text-decoration-color:#e69500" title="Простое слово">$1</u>'));
+const hl=hlText(text,[...errRules(),...over.map(([w])=>({re:new RegExp('\\b'+w+'\\b','gi'),tag:'u',attr:'style="text-decoration-color:#e69500"',title:'Простое слово'}))]);
 return {wc,min,B,ex,weak:weak.slice(0,3),errs,over,links,paras:paras.length,intro,concl,ttr,complex,avg,sd,hl:hl.replace(/\n/g,'<br>'),imp:ip.join('\n\n')}}
 let curP;function write(){curP=S.writing[Math.floor(Math.random()*S.writing.length)];app.innerHTML=`<div class="card"><h3>Writing</h3><p><b>${curP}</b></p><textarea id="ta" oninput="wc.textContent=this.value.trim().split(/\\s+/).filter(Boolean).length+' words (min '+(/Task 1/.test(curP)?150:250)+')'"></textarea><p id="wc"><small>0 words</small></p><button class="btn" onclick="doEval()">Оценить эссе</button><button class="btn" onclick="go('Writing')">New prompt</button></div><div id="res"></div>`}
 function doEval(){const t=ta.value.trim();if(t.split(/\s+/).length<20){alert('Напишите хотя бы 20 слов');return}const r=evalW(t,curP);
@@ -52,7 +52,7 @@ const N={TA:/Task 1/.test(curP)?'Task Achievement':'Task Response',CC:'Coherence
 res.innerHTML=`<div class="card"><h2>Overall band: ${r.B.overall}</h2>${Object.keys(N).map(k=>`<div class="q"><b>${N[k]}: ${r.B[k]}</b><br><small>${r.ex[k]}</small></div>`).join('')}<small>Оценка автоматическая и приблизительная.</small></div>
 <div class="card"><h3>Проверки</h3><ul><li>Слова: ${r.wc}/${r.min} ${r.wc>=r.min?'✅':'❌'}</li><li>Абзацы: ${r.paras} ${r.paras>=4?'✅':'⚠️'}</li><li>Вступление ${r.intro?'✅':'❌'} · Вывод ${r.concl?'✅':'❌'}</li><li>Связки: ${r.links.join(', ')||'—'}</li><li>Лексическое разнообразие: ${Math.round(r.ttr*100)}%</li><li>Сложные предложения: ${Math.round(r.complex*100)}% · средняя длина ${r.avg.toFixed(1)}</li>
 <li>Простые слова → синонимы: ${r.over.map(([w,n])=>`<b>${w}</b>×${n} → ${BASIC[w].join(', ')}`).join('; ')||'—'}</li></ul>
-<h4>Ошибки (наведите на выделение)</h4><ul>${r.errs.map(e=>`<li><mark>${e[0]}</mark> — ${e[1]}</li>`).join('')||'<li>Типичных ошибок не найдено</li>'}</ul><div style="border:1px solid #ddd;padding:10px;border-radius:8px">${r.hl}</div></div>
+<h4>Ошибки (наведите на выделение)</h4><ul>${r.errs.map(e=>`<li><mark>${esc(e[0])}</mark> — ${e[1]}</li>`).join('')||'<li>Типичных ошибок не найдено</li>'}</ul><div style="border:1px solid #ddd;padding:10px;border-radius:8px">${r.hl}</div></div>
 <div class="card"><h3>Топ-3 слабых места и что тренировать</h3><ol>${r.weak.map(w=>`<li><b>${w[1]}</b><br><small>Практика: ${w[2]}</small></li>`).join('')||'<li>Отлично! Продолжайте практику.</li>'}</ol></div>
 <div class="card"><h3>Улучшенная версия</h3><div style="white-space:pre-wrap">${r.imp.replace(/</g,'&lt;')}</div></div>`;
 saveH({type:'writing',date:Date.now(),band:r.B.overall,...r.B,wc:r.wc})}
@@ -61,3 +61,9 @@ function progress(){const h=JSON.parse(localStorage.ieltsH||'[]');app.innerHTML=
 const c=cv.getContext('2d'),W=800,H=300,p=40;c.font='12px sans-serif';for(let b=4;b<=9;b++){const y=H-p-(b-4)/5*(H-2*p);c.fillStyle='#999';c.fillText(b,10,y+4);c.strokeStyle='#eee';c.beginPath();c.moveTo(p,y);c.lineTo(W-10,y);c.stroke()}
 [['writing','#1f4fd1'],['speaking','#127a2e']].forEach(([t,col])=>{const d=h.filter(e=>e.type==t);if(!d.length)return;c.strokeStyle=c.fillStyle=col;c.lineWidth=2;c.beginPath();d.forEach((e,i)=>{const x=p+(d.length==1?0:i/(d.length-1))*(W-p-20),y=H-p-(e.band-4)/5*(H-2*p);i?c.lineTo(x,y):c.moveTo(x,y)});c.stroke();d.forEach((e,i)=>{const x=p+(d.length==1?0:i/(d.length-1))*(W-p-20),y=H-p-(e.band-4)/5*(H-2*p);c.beginPath();c.arc(x,y,4,0,7);c.fill()})})}
 tabs.Progress=progress;
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+// one-pass highlighter: rules=[{re,tag,attr,title}] applied to ORIGINAL text by char ranges
+function hlText(text,rules){const R=[];rules.forEach(r=>{const re=new RegExp(r.re.source,r.re.flags.includes('g')?r.re.flags:r.re.flags+'g');let m;while((m=re.exec(text))){if(!m[0].length){re.lastIndex++;continue}R.push({s:m.index,e:m.index+m[0].length,r})}});
+R.sort((a,b)=>a.s-b.s||b.e-a.e);let out='',pos=0;for(const x of R){if(x.s<pos)continue;out+=esc(text.slice(pos,x.s))+`<${x.r.tag} ${x.r.attr||''} title="${esc(x.r.title||'')}">${esc(text.slice(x.s,x.e))}</${x.r.tag}>`;pos=x.e}return out+esc(text.slice(pos))}
+function errRules(){return ERR.filter(e=>e[1]).map(([re,,why])=>({re,tag:'mark',title:why}))}
+function cleanPunct(t){return t.replace(/\s+,/g,',').replace(/,(\s*,)+/g,',').replace(/,\s*([.!?])/g,'$1').replace(/^\s*,\s*/,'').replace(/\s{2,}/g,' ').trim()}

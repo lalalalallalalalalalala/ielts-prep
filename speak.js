@@ -53,12 +53,13 @@ if(tv<=2)weak.push([1.7,'Мало грамматических конструк�
 if(ttr<.6||over.length)weak.push([1.6,'Простая/повторяющаяся лексика.','Учите синонимы из «Словаря C1/C2» и 2–3 идиомы по теме.']);
 if(conf<.8)weak.push([1.5,'Нечёткое произношение отдельных слов.','Повторяйте за носителем (shadowing) фрагменты, выделенные жёлтым.']);weak.sort((a,b)=>b[0]-a[0]);
 let imp=fixed;Object.keys(fills).forEach(f=>imp=imp.replace(new RegExp('\\b'+f+'\\b,?\\s*','gi'),''));over.forEach(([w])=>{let i=0;imp=imp.replace(new RegExp('\\b'+w+'\\b','gi'),()=>BASIC[w][i++%3])});
-imp=imp.replace(/\s+/g,' ').trim();imp=imp[0].toUpperCase()+imp.slice(1);if(!/[.!?]$/.test(imp))imp+='.';if(links.length<2)imp+=' For example, this is something I have experienced personally, and that is why I feel quite strongly about it. Overall, I would say it plays an important role in my life.';
-let hl=SP.segs.map(s=>{let t=s.t.replace(/</g,'&lt;');Object.keys(fills).forEach(f=>t=t.replace(new RegExp('\\b('+f+')\\b','gi'),'<s style="color:#b3261e" title="слово-паразит">$1</s>'));errs.forEach(([e,w])=>t=t.split(e).join(`<mark title="${w}">${e}</mark>`));return s.c<.75?`<span style="background:#fff3b0" title="низкая уверенность: ${Math.round(s.c*100)}%">${t}</span>`:t}).join(' ');
+imp=cleanPunct(imp);imp=imp[0].toUpperCase()+imp.slice(1);if(!/[.!?]$/.test(imp))imp+='.';if(links.length<2)imp+=' For example, this is something I have experienced personally, and that is why I feel quite strongly about it. Overall, I would say it plays an important role in my life.';
+const rules=[...Object.keys(fills).map(f=>({re:new RegExp('\\b'+f+'\\b','gi'),tag:'s',attr:'style="color:#b3261e"',title:'слово-паразит'})),...errRules()];
+let hl=SP.segs.map(s=>{const h=hlText(s.t,rules);return s.c<.75?`<span style="background:#fff3b0" title="низкая уверенность распознавания: ${Math.round(s.c*100)}%">${h}</span>`:h}).join(' ');
 const N={FC:'Fluency & Coherence',LR:'Lexical Resource',GRA:'Grammatical Range & Accuracy',P:'Pronunciation'};
 spres.innerHTML=`<div class="card"><h2>Speaking band: ${B.overall}</h2>${Object.keys(N).map(k=>`<div class="q"><b>${N[k]}: ${B[k]}</b><br><small>${ex[k]}</small></div>`).join('')}<small>Автоматическая приблизительная оценка.</small></div>
 <div class="card"><h3>Ваш ответ</h3><p>${hl}</p><small><span style="background:#fff3b0">жёлтым</span> — нечёткое произношение · <s style="color:#b3261e">зачёркнуто</s> — слова-паразиты · <mark>выделено</mark> — грамм. ошибки</small>
-<ul>${errs.map(e=>`<li><mark>${e[0]}</mark> — ${e[1]}</li>`).join('')}</ul></div>
+<ul>${errs.map(e=>`<li><mark>${esc(e[0])}</mark> — ${e[1]}</li>`).join('')}</ul></div>
 <div class="card"><h3>Топ-3 слабых места</h3><ol>${weak.slice(0,3).map(w=>`<li><b>${w[1]}</b><br><small>Что тренировать: ${w[2]}</small></li>`).join('')||'<li>Отлично!</li>'}</ol></div>
 <div class="card"><h3>Улучшенный ответ</h3><p>${imp.replace(/</g,'&lt;')}</p></div>`;
 saveH({type:'speaking',date:Date.now(),band:B.overall,note:`Часть ${SP.part} · FC ${B.FC} · LR ${B.LR} · GRA ${B.GRA} · P ${B.P} · ${wc} слов`});spres.scrollIntoView({behavior:'smooth'})}
