@@ -20,7 +20,7 @@ c.series.forEach(([n],i)=>s+=`<rect x="${L+i*150}" y="${H-14}" width="12" height
 let WS={mode:localStorage.wMode||'ac',task:2,i:null,timer:null};
 function write(){clearInterval(WS.timer);const pool=WS.task==2?WP.t2:WS.mode=='ac'?WP.at1:WP.gt1;if(WS.i==null||WS.i>=pool.length)WS.i=Math.floor(Math.random()*pool.length);const it=pool[WS.i];
 const prompt=WS.task==2?'Task 2: '+it:WS.mode=='ac'?'Task 1 (Academic): '+it.p:'Task 1 (General, letter): '+it;curP=prompt;const min=WS.task==1?150:250,mins=WS.task==1?20:40;
-app.innerHTML=`<div class="card"><h3>Writing</h3><div role="group" aria-label="Модуль">${[['ac','Academic'],['gt','General Training']].map(([m,n])=>`<button class="btn" style="${WS.mode==m?'':'background:#8aa0e0'}" onclick="WS.mode=localStorage.wMode='${m}';WS.i=null;write()">${n}</button>`).join('')}</div>
+app.innerHTML=`<div class="card"><h3>Письмо (Writing)</h3><div role="group" aria-label="Модуль">${[['ac','Academic'],['gt','General Training']].map(([m,n])=>`<button class="btn" style="${WS.mode==m?'':'background:#8aa0e0'}" onclick="WS.mode=localStorage.wMode='${m}';WS.i=null;write()">${n}</button>`).join('')}</div>
 <div role="group" aria-label="Задание">${[1,2].map(t=>`<button class="btn" style="${WS.task==t?'':'background:#8aa0e0'}" onclick="WS.task=${t};WS.i=null;write()">Task ${t} (${t==1?'20':'40'} мин, ${t==1?150:250}+ слов)</button>`).join('')}</div></div>
 <div class="card"><p style="white-space:pre-line"><b>${esc(prompt)}</b></p>${WS.task==1&&WS.mode=='ac'?svgChart(it):''}
 <div style="display:flex;gap:10px;align-items:center;margin:8px 0"><span id="timer" aria-live="polite">${mins}:00</span><button class="btn" onclick="wTimer(${mins})" id="wtb">▶ Старт таймера</button><small>Рекомендуемое время: ${mins} мин</small></div>

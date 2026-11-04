@@ -1,6 +1,6 @@
 let LS0={i:0,plays:0,exam:true};
 function voices(){const v=speechSynthesis.getVoices().filter(x=>/^en/.test(x.lang));return [v.find(x=>/GB|UK/.test(x.lang+x.name))||v[0],v.find(x=>/US/.test(x.lang)&&!/Google UK/.test(x.name))||v[1]||v[0]]}
-function lsHome(){const L=window.LISTEN;app.innerHTML=`<div class="card"><h3>Listening</h3><p><small>Аудио читается синтезатором речи браузера (лучше всего в Chrome/Edge с наушниками). Экзаменационный режим: запись звучит <b>один раз</b>, как на реальном IELTS. Тренировочный режим: можно слушать повторно и менять скорость.</small></p>
+function lsHome(){const L=window.LISTEN;app.innerHTML=`<div class="card"><h3>Аудирование (Listening)</h3><p><small>Аудио читается синтезатором речи браузера (лучше всего в Chrome/Edge с наушниками). Экзаменационный режим: запись звучит <b>один раз</b>, как на реальном IELTS. Тренировочный режим: можно слушать повторно и менять скорость.</small></p>
 <label><input type="checkbox" ${LS0.exam?'checked':''} onchange="LS0.exam=this.checked"> Экзаменационный режим (одно прослушивание)</label></div>
 ${L.map((p,i)=>`<div class="card"><b>${p.title}</b><br><small>${p.type} · ${p.qs.length} вопросов</small><br><button class="btn" onclick="lsOpen(${i})">Открыть</button></div>`).join('')}`}
 function lsOpen(i){speechSynthesis.cancel();LS0.i=i;LS0.plays=0;const p=window.LISTEN[i];

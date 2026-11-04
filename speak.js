@@ -4,7 +4,7 @@ const SQ={1:["Do you work or are you a student?","What do you like most about yo
 const LIM={1:45,3:90};const FILL=["um","uh","er","erm","ah","like","you know","i mean","actually","basically","sort of","kind of","well"];
 const SLINK=["because","so","however","although","for example","for instance","on the other hand","moreover","in addition","as a result","firstly","secondly","finally","while","whereas","which","that's why","in my opinion","personally","to be honest","overall","therefore"];
 let SP={part:1,q:null,phase:'idle',segs:[],t0:0,last:0,pauses:[],timer:null,end:0};
-function spk(){app.innerHTML=`<div class="card"><h3>Speaking — экзаменационная практика</h3>${[1,2,3].map(n=>`<button class="btn" style="${SP.part==n?'':'background:#8aa0e0'}" onclick="SP.part=${n};SP.q=null;spk()" aria-label="Часть ${n}">Часть ${n}</button>`).join('')}
+function spk(){app.innerHTML=`<div class="card"><h3>Говорение (Speaking) — экзаменационная практика</h3>${[1,2,3].map(n=>`<button class="btn" style="${SP.part==n?'':'background:#8aa0e0'}" onclick="SP.part=${n};SP.q=null;spk()" aria-label="Часть ${n}">Часть ${n}</button>`).join('')}
 <p><small>${SP.part==1?'Часть 1: короткие ответы, лимит 45 сек на вопрос.':SP.part==2?'Часть 2: 1 минута на подготовку (можно делать заметки), затем 2 минуты ответа. Запись остановится автоматически.':'Часть 3: развёрнутое обсуждение, лимит 90 сек на ответ.'}</small></p></div><div class="card" id="spq"></div><div id="spres"></div>`;newQ()}
 function newQ(){const a=SQ[SP.part];SP.q=SP.q||a[Math.floor(Math.random()*a.length)];const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 spq.innerHTML=`<h3 style="white-space:pre-line">${SP.q}</h3>${SP.part==2?'<textarea id="notes" placeholder="Заметки во время подготовки" style="min-height:70px"></textarea>':''}
@@ -57,7 +57,7 @@ imp=cleanPunct(imp);imp=imp[0].toUpperCase()+imp.slice(1);if(!/[.!?]$/.test(imp)
 const rules=[...Object.keys(fills).map(f=>({re:new RegExp('\\b'+f+'\\b','gi'),tag:'s',attr:'style="color:#b3261e"',title:'слово-паразит'})),...errRules()];
 let hl=SP.segs.map(s=>{const h=hlText(s.t,rules);return s.c<.75?`<span style="background:#fff3b0" title="низкая уверенность распознавания: ${Math.round(s.c*100)}%">${h}</span>`:h}).join(' ');
 const N={FC:'Fluency & Coherence',LR:'Lexical Resource',GRA:'Grammatical Range & Accuracy',P:'Pronunciation'};
-spres.innerHTML=`<div class="card"><h2>Speaking band: ${B.overall}</h2>${Object.keys(N).map(k=>`<div class="q"><b>${N[k]}: ${B[k]}</b><br><small>${ex[k]}</small></div>`).join('')}<small>Автоматическая приблизительная оценка.</small></div>
+spres.innerHTML=`<div class="card"><h2>Общий балл Speaking: ${B.overall}</h2>${Object.keys(N).map(k=>`<div class="q"><b>${N[k]}: ${B[k]}</b><br><small>${ex[k]}</small></div>`).join('')}<small>Автоматическая приблизительная оценка.</small></div>
 <div class="card"><h3>Ваш ответ</h3><p>${hl}</p><small><span style="background:#fff3b0">жёлтым</span> — нечёткое произношение · <s style="color:#b3261e">зачёркнуто</s> — слова-паразиты · <mark>выделено</mark> — грамм. ошибки</small>
 <ul>${errs.map(e=>`<li><mark>${esc(e[0])}</mark> — ${e[1]}</li>`).join('')}</ul></div>
 <div class="card"><h3>Топ-3 слабых места</h3><ol>${weak.slice(0,3).map(w=>`<li><b>${w[1]}</b><br><small>Что тренировать: ${w[2]}</small></li>`).join('')||'<li>Отлично!</li>'}</ol></div>
