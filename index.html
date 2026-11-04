@@ -1,17 +1,20 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IELTS Prep</title><style>
-body{font-family:system-ui,sans-serif;margin:0;background:#f4f6fb;color:#1c2333}header{background:#1f4fd1;color:#fff;padding:16px 20px}
+<title>IELTS Prep</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet"><style>
+body{font-family:Inter,system-ui,sans-serif;margin:0;background:#f4f6fb;color:#1c2333}header{background:#1f4fd1;color:#fff;padding:16px 20px}
 nav{display:flex;gap:8px;flex-wrap:wrap;padding:10px 20px;background:#fff;box-shadow:0 1px 4px #0001}nav button{border:0;padding:8px 14px;border-radius:8px;background:#e8eefc;cursor:pointer;font-weight:600}
 nav button.on{background:#1f4fd1;color:#fff}main{max-width:860px;margin:20px auto;padding:0 16px}.card{background:#fff;border-radius:12px;padding:18px;margin-bottom:16px;box-shadow:0 1px 4px #0001}
 textarea{width:100%;min-height:180px;font:inherit;padding:10px;box-sizing:border-box}.btn{background:#1f4fd1;color:#fff;border:0;padding:9px 16px;border-radius:8px;cursor:pointer;margin:4px 4px 0 0}
 .q{margin:10px 0}.ok{color:#127a2e}.bad{color:#b3261e}#timer{font-size:28px;font-weight:700}small{color:#667}
-</style></head><body><header><h1 style="margin:0">IELTS Prep</h1><small style="color:#dde">Speaking · Writing · Reading · Vocabulary</small></header>
-<nav id="nav"></nav><main id="app"></main><script>
+footer{text-align:center;padding:28px 10px 34px;margin-top:30px;background:linear-gradient(180deg,transparent,#e3e9fb)}
+.zal{font-family:Pacifico,cursive;font-size:30px;background:linear-gradient(90deg,#1f4fd1,#7b2cbf,#e0457b,#f59e0b,#1f4fd1);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:zg 6s linear infinite,zf 3s ease-in-out infinite;display:inline-block}
+@keyframes zg{to{background-position:300% 0}}@keyframes zf{50%{transform:translateY(-4px) rotate(-1deg)}}
+button,input,select,textarea{font-family:inherit}</style></head><body><header><h1 style="margin:0">IELTS Prep</h1><small style="color:#dde">Speaking · Writing · Reading · Vocabulary</small></header>
+<nav id="nav"></nav><main id="app"></main><footer><span class="zal">Made by Zalkar!</span></footer><script>
 const S={speaking:[["Part 1","Do you work or are you a student?","What do you like about your hometown?","How do you usually spend your weekends?"],["Part 2 (1 min prep, 2 min talk)","Describe a book you enjoyed reading. Say what it was, when you read it, what it was about, and explain why you liked it.","Describe a place you would like to visit. Say where it is, how you know about it, what you would do there, and why."],["Part 3","Do you think reading habits have changed in recent years?","How does tourism affect local communities?"]],
 writing:["Task 2: Some people believe universities should focus on job skills, others think they should provide general knowledge. Discuss both views and give your opinion.","Task 2: In many countries, people are living longer. What problems does this cause, and what solutions can you suggest?","Task 1 (letter): Write to your landlord about a problem in your apartment."],
 reading:{text:"Urban green spaces provide more than recreation. Studies show that parks lower city temperatures by up to 3°C, reduce air pollution, and improve residents' mental health. However, many cities struggle to fund their maintenance, and some parks are being sold to developers.",qs:[["Parks can reduce city temperatures.","TRUE"],["All cities have enough money to maintain parks.","FALSE"],["Parks increase property prices.","NOT GIVEN"]]},
 vocab:[["mitigate","make less severe"],["substantial","large in amount"],["detrimental","harmful"],["prevalent","widespread"],["advocate","publicly support"],["inevitable","certain to happen"],["deteriorate","become worse"],["feasible","possible to do"]]};
-const tabs={Speaking:speak,Writing:write,Reading:read,Vocabulary:vocab};let cur="Speaking";const app=document.getElementById('app');
+const tabs={Speaking:speak,Writing:()=>write(),Reading:read};let cur="Speaking";const app=document.getElementById('app');
 function nav(){document.getElementById('nav').innerHTML=Object.keys(tabs).map(t=>`<button class="${t==cur?'on':''}" onclick="go('${t}')">${t}</button>`).join('')}
 function go(t){cur=t;nav();tabs[t]()}
 let rec,tm;function speak(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
@@ -25,4 +28,4 @@ function stopRec(){rec&&rec.stop();clearInterval(tm);const t=tr.textContent.trim
 function read(){const r=S.reading;app.innerHTML=`<div class="card"><h3>Reading – TRUE / FALSE / NOT GIVEN</h3><p>${r.text}</p>${r.qs.map((q,i)=>`<div class="q">${i+1}. ${q[0]}<br>${["TRUE","FALSE","NOT GIVEN"].map(o=>`<label><input type=radio name=q${i} value="${o}"> ${o}</label> `).join('')} <span id="r${i}"></span></div>`).join('')}<button class="btn" onclick="chk()">Check</button></div>`}
 function chk(){S.reading.qs.forEach((q,i)=>{const v=(document.querySelector(`[name=q${i}]:checked`)||{}).value;document.getElementById('r'+i).innerHTML=v==q[1]?'<b class=ok>✓</b>':`<b class=bad>✗ ${q[1]}</b>`})}
 let vi=0;function vocab(){const v=S.vocab[vi%S.vocab.length];app.innerHTML=`<div class="card"><h3>Vocabulary flashcard ${vi%S.vocab.length+1}/${S.vocab.length}</h3><h2>${v[0]}</h2><p id="m" style="visibility:hidden">${v[1]}</p><button class="btn" onclick="m.style.visibility='visible'">Show meaning</button><button class="btn" onclick="vi++;vocab()">Next</button></div>`}
-</script><script src="w.js"></script><script>go(cur);</script></body></html>
+</script><script src="w.js"></script><script src="data/vocab.js"></script><script src="dict.js"></script><script>go(cur);</script></body></html>
