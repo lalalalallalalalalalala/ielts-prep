@@ -1,0 +1,35 @@
+a foregone conclusion|C2|phrase|предрешённый исход|a result that is certain|The election result was a foregone conclusion.|certainty,inevitability|seem a foregone conclusion;by no means a foregone conclusion|so
+a moot point|C2|phrase|спорный вопрос|a matter open to debate|Whether fines work is a moot point.|debatable issue,open question|remain a moot point;it is a moot point|ge
+a paradigm shift|C2|phrase|смена парадигмы|a fundamental change in approach|AI represents a paradigm shift in medicine.|revolution,fundamental change|undergo a paradigm shift;represent a paradigm shift|te
+a slippery slope|C2|phrase|скользкая дорожка|a course of action leading to worse results|Censorship can be a slippery slope.|dangerous path,downward spiral|a slippery slope towards;on a slippery slope|so
+a stark contrast|C2|phrase|резкий контраст|a very clear difference|Rural poverty is in stark contrast to urban wealth.|sharp contrast,marked difference|in stark contrast to;stand in stark contrast|ec
+an acid test|C2|phrase|лакмусовая бумажка|a decisive test of worth|Exams are the acid test of a curriculum.|litmus test,true test|the acid test of;real acid test|ed
+be a far-reaching consequence|C2|phrase|далеко идущие последствия|effects that are wide and long-lasting|The decision had far-reaching consequences.|wide-ranging effects,profound implications|have far-reaching consequences;far-reaching impact|so
+be conspicuous by its absence|C2|phrase|бросаться в глаза своим отсутствием|to be noticeably missing|Government support was conspicuous by its absence.|be noticeably missing,be lacking|conspicuous by its absence;conspicuous by their absence|so
+be in its infancy|C2|phrase|находиться в зачаточном состоянии|to be at a very early stage|Quantum computing is still in its infancy.|be at an early stage,be emerging|still in its infancy;technology in its infancy|te
+be riddled with|C2|phrase|быть полным (недостатков)|to be full of something bad|The report was riddled with errors.|be full of,be plagued by|riddled with errors;riddled with corruption|cr
+by virtue of|C2|phrase|в силу, благодаря|because of|By virtue of its location, the city thrives.|because of,owing to|by virtue of its size;by virtue of being|ge
+come full circle|C2|phrase|вернуться к исходной точке|to return to the original position|Fashion has come full circle.|return to the start,go back|come full circle;has come full circle|so
+cut both ways|C2|phrase|иметь две стороны|to have both good and bad effects|Flexible hours cut both ways.|be double-edged,have two sides|argument cuts both ways;can cut both ways|wo
+fly in the face of|C2|phrase|противоречить|to contradict established ideas|The claim flies in the face of evidence.|contradict,defy|fly in the face of logic;fly in the face of evidence|ge
+gloss over|C2|phrase|замалчивать, сглаживать|to avoid dealing with something properly|The report glosses over the risks.|skate over,ignore|gloss over the problems;gloss over the facts|me
+hang in the balance|C2|phrase|висеть на волоске|to be uncertain|The future of the species hangs in the balance.|be uncertain,be at stake|hang in the balance;still hang in the balance|en
+have far-reaching implications|C2|phrase|иметь далеко идущие последствия|to have wide effects|Gene editing has far-reaching implications.|have profound consequences,have wide impact|far-reaching implications for;have far-reaching implications|te
+in the throes of|C2|phrase|в разгаре (трудного процесса)|in the middle of a difficult situation|The country is in the throes of a crisis.|amid,in the midst of|in the throes of change;in the throes of recession|ec
+lie at the root of|C2|phrase|лежать в основе|to be the basic cause|Inequality lies at the root of many problems.|be the cause of,underlie|lie at the root of the problem;lie at the root of conflict|so
+make inroads into|C2|phrase|продвигаться, проникать|to make progress in a new area|Electric cars are making inroads into the market.|advance into,penetrate|make inroads into;make significant inroads|ec
+of paramount importance|C2|phrase|первостепенной важности|extremely important|Safety is of paramount importance.|crucial,vital|of paramount importance;be of paramount importance|ge
+on a grand scale|C2|phrase|в огромных масштабах|very large|Deforestation is happening on a grand scale.|massively,extensively|on a grand scale;operate on a grand scale|en
+out of the question|C2|phrase|исключено|impossible|Raising taxes is out of the question.|impossible,not an option|completely out of the question;out of the question for|ec
+put paid to|C2|phrase|положить конец|to stop something from happening|The injury put paid to his career.|end,destroy|put paid to hopes;put paid to plans|ge
+run its course|C2|phrase|идти своим чередом, исчерпать себя|to continue until it naturally ends|The trend has run its course.|end naturally,play out|run its course;allow to run its course|so
+stand to reason|C2|phrase|быть очевидным|to be logical|It stands to reason that prices will rise.|be logical,be obvious|it stands to reason that;stands to reason|ge
+steer clear of|C2|phrase|держаться подальше от|to avoid|Students should steer clear of plagiarism.|avoid,keep away from|steer clear of trouble;steer clear of debt|ed
+take a heavy toll|C2|phrase|нанести серьёзный урон|to cause great damage|The war took a heavy toll on civilians.|cause great harm,devastate|take a heavy toll on;exact a heavy toll|so
+the crux of the matter|C2|phrase|суть вопроса|the most important point|The crux of the matter is funding.|heart of the matter,core issue|the crux of the matter is;get to the crux|ge
+the powers that be|C2|phrase|власть имущие|people in authority|The powers that be ignored the protests.|the authorities,the establishment|the powers that be;convince the powers that be|so
+to the letter|C2|phrase|буквально, неукоснительно|exactly|Rules must be followed to the letter.|exactly,precisely|follow to the letter;obey to the letter|cr
+touch a nerve|C2|phrase|задеть за живое|to upset someone by mentioning a sensitive issue|The article touched a nerve with readers.|upset,strike a chord|touch a raw nerve;touch a nerve with|me
+weather the storm|C2|phrase|переждать бурю|to survive a difficult period|Small firms struggled to weather the storm.|survive,ride out|weather the storm;help weather the storm|ec
+with a view to|C2|phrase|с целью|with the aim of|They met with a view to reaching agreement.|in order to,aiming to|with a view to improving;with a view to doing|ge
+widen the gulf between|C2|phrase|увеличивать пропасть между|to increase the difference between|Technology may widen the gulf between rich and poor.|widen the gap,deepen the divide|widen the gulf between;further widen the gulf|so
