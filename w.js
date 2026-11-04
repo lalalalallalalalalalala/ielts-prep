@@ -22,7 +22,7 @@ let ta=5+(wc>=min?1:wc>=min*.8?0:wc>=min*.6?-1.5:-2.5)+rel*1.5+(intro?.5:0)+(con
 let cc=4.5+Math.min(links.length,8)*.3+(paras.length>=4?1:paras.length>=3?.5:paras.length<=1?-1:0)+(intro&&concl?.5:0);
 let lr=4.5+(ttr>.75?2:ttr>.65?1.5:ttr>.55?1:0)+Math.min(long*10,1.5)-over.length*.25+(wc>=min?.5:0);
 let ge=7.5-Math.min(errs.length*.5,3.5)+(complex>.4?.5:complex<.15?-1:0)+(sd>5?.5:0)+(passive?.25:0)-(wc<100?1:0);
-const cap=wc<min*.6?5:wc<min*.8?6:9;const B={TA:clamp(ta),CC:Math.min(cap,clamp(cc)),LR:Math.min(cap,clamp(lr)),GRA:clamp(ge)};B.overall=Math.round((B.TA+B.CC+B.LR+B.GRA)/4*2)/2;
+const cap=wc<min*.6?5:wc<min*.8?6:9;const B={TA:Math.min(wc<min?6:9,clamp(ta)),CC:Math.min(cap,clamp(cc)),LR:Math.min(cap,clamp(lr)),GRA:clamp(ge)};B.overall=Math.round((B.TA+B.CC+B.LR+B.GRA)/4*2)/2;
 const ex={TA:`Объём ${wc} слов (минимум ${min})${wc<min?' — недобор, это снижает балл':''}. Ключевые слова задания раскрыты на ${Math.round(rel*100)}%${kw.length?` (${kwHit.join(', ')||'нет'} из ${kw.join(', ')})`:''}. ${intro?'Есть вступление с позицией':'Нет чёткого вступления/позиции'}; ${concl?'есть вывод':'нет вывода'}.`,
 CC:`Абзацев: ${paras.length}${paras.length<4?' (для эссе нужно 4–5)':''}. Связующих слов: ${links.length} (${links.join(', ')||'нет'}). ${links.length<4?'Мало связок — логика переходов неочевидна.':'Связки используются достаточно.'}`,
 LR:`Лексическое разнообразие ${Math.round(ttr*100)}% (уникальные/все значимые слова). Доля длинных «академических» слов ${Math.round(long*100)}%. ${over.length?'Повторяются простые слова: '+over.map(o=>o[0]).join(', ')+'.':'Перегрузки простыми словами нет.'}`,
