@@ -5,8 +5,8 @@ const STOP=new Set("the a an and or but of to in on at for with is are was were 
 const clamp=b=>Math.max(4,Math.min(9,Math.round(b*2)/2));
 function evalW(text,prompt){const task1=/Task 1/i.test(prompt),min=task1?150:250;const words=text.match(/[A-Za-z']+/g)||[];const wc=words.length;const lw=words.map(w=>w.toLowerCase());
 const paras=text.split(/\n\s*\n|\n/).map(p=>p.trim()).filter(Boolean);const sents=text.split(/(?<=[.!?])\s+/).filter(s=>s.trim().length>2);
-const low=text.toLowerCase();const intro=/(this essay|i (believe|think|agree)|in my (view|opinion)|some people|it is (often|widely)|nowadays|dear)/i.test(paras[0]);
-const concl=/(in conclusion|to (sum up|conclude)|overall|in summary|yours (sincerely|faithfully)|best regards)/i.test(paras[paras.length-1]);
+const low=text.toLowerCase();const intro=/(the (bar |line |pie )?(chart|graph|table|diagram)s? (shows?|illustrates?|compares?|gives?)|i am writing|this essay|i (believe|think|agree)|in my (view|opinion)|some people|it is (often|widely)|nowadays|dear)/i.test(paras[0]);
+const concl=/(overall|in general|it is clear that|in conclusion|to (sum up|conclude)|overall|in summary|yours (sincerely|faithfully)|best regards)/i.test(paras[paras.length-1]);
 const kw=[...new Set((prompt.replace(/Task \d[^:]*:/,'').toLowerCase().match(/[a-z]{5,}/g)||[]).filter(w=>!STOP.has(w)&&!/discuss|people|believe|think|others|opinion|suggest|countries|write/.test(w)))];
 const kwHit=kw.filter(k=>low.includes(k.slice(0,Math.max(5,k.length-2))));const rel=kw.length?kwHit.length/kw.length:1;
 const links=LINK.filter(l=>new RegExp('\\b'+l+'\\b','i').test(text));const content=lw.filter(w=>!STOP.has(w));const ttr=content.length?new Set(content).size/content.length:0;
@@ -18,11 +18,11 @@ const lens=sents.map(s=>s.split(/\s+/).length);const avg=lens.reduce((a,b)=>a+b,
 const complex=sents.filter(s=>/\b(which|who|whom|whose|although|because|while|whereas|if|unless|since|when|that)\b/i.test(s)).length/(sents.length||1);
 const passive=(text.match(/\b(is|are|was|were|be|been|being)\s+\w+ed\b/gi)||[]).length;
 // bands
-let ta=5+(wc>=min?1:wc>=min*.8?0:-1.5)+rel*1.5+(intro?.5:0)+(concl?.5:0)+(wc>=min*1.1?.5:0);
+let ta=5+(wc>=min?1:wc>=min*.8?0:wc>=min*.6?-1.5:-2.5)+rel*1.5+(intro?.5:0)+(concl?.5:0)+(wc>=min*1.1?.5:0);
 let cc=4.5+Math.min(links.length,8)*.3+(paras.length>=4?1:paras.length>=3?.5:paras.length<=1?-1:0)+(intro&&concl?.5:0);
 let lr=4.5+(ttr>.75?2:ttr>.65?1.5:ttr>.55?1:0)+Math.min(long*10,1.5)-over.length*.25+(wc>=min?.5:0);
 let ge=7.5-Math.min(errs.length*.5,3.5)+(complex>.4?.5:complex<.15?-1:0)+(sd>5?.5:0)+(passive?.25:0)-(wc<100?1:0);
-const B={TA:clamp(ta),CC:clamp(cc),LR:clamp(lr),GRA:clamp(ge)};B.overall=Math.round((B.TA+B.CC+B.LR+B.GRA)/4*2)/2;
+const cap=wc<min*.6?5:wc<min*.8?6:9;const B={TA:clamp(ta),CC:Math.min(cap,clamp(cc)),LR:Math.min(cap,clamp(lr)),GRA:clamp(ge)};B.overall=Math.round((B.TA+B.CC+B.LR+B.GRA)/4*2)/2;
 const ex={TA:`Объём ${wc} слов (минимум ${min})${wc<min?' — недобор, это снижает балл':''}. Ключевые слова задания раскрыты на ${Math.round(rel*100)}%${kw.length?` (${kwHit.join(', ')||'нет'} из ${kw.join(', ')})`:''}. ${intro?'Есть вступление с позицией':'Нет чёткого вступления/позиции'}; ${concl?'есть вывод':'нет вывода'}.`,
 CC:`Абзацев: ${paras.length}${paras.length<4?' (для эссе нужно 4–5)':''}. Связующих слов: ${links.length} (${links.join(', ')||'нет'}). ${links.length<4?'Мало связок — логика переходов неочевидна.':'Связки используются достаточно.'}`,
 LR:`Лексическое разнообразие ${Math.round(ttr*100)}% (уникальные/все значимые слова). Доля длинных «академических» слов ${Math.round(long*100)}%. ${over.length?'Повторяются простые слова: '+over.map(o=>o[0]).join(', ')+'.':'Перегрузки простыми словами нет.'}`,
