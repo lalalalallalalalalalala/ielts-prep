@@ -1,0 +1,76 @@
+#Артикли|a/an — первое упоминание исчисляемого ед. ч.; the — конкретный/известный предмет, уникальные объекты; без артикля — общие понятия во мн. ч. и неисчисляемые. В IELTS: «the government», «society» (без артикля), «the environment».
+___ environment is under threat from pollution.|The;A;—|0|The environment — устойчивое выражение, «окружающая среда» в целом.|Без артикля кажется логичным (общее понятие), но environment всегда с the.
+Many people believe that ___ society should support the elderly.|the;a;—|2|Society в общем смысле — без артикля.|«the society» — типичная ошибка русскоязычных.
+She is studying to become ___ engineer.|a;an;the|1|Перед гласным звуком — an.|—
+It was ___ unique opportunity.|a;an;the|0|Unique начинается со звука /j/ — поэтому a.|Буква u — гласная, но звук согласный.
+___ unemployment has risen sharply.|The;An;—|2|Абстрактное неисчисляемое в общем смысле — без артикля.|—
+He spent ___ hour waiting.|a;an;the|1|Hour — h не читается, звук гласный.|—
+___ Internet has changed communication.|The;An;—|0|The Internet — уникальный объект.|—
+Students who live in ___ countryside often travel far.|the;a;—|0|The countryside — устойчивое выражение.|—
+#Present Perfect vs Past Simple|Past Simple — законченное действие с указанием прошедшего времени (yesterday, in 2010, ago). Present Perfect — связь с настоящим, опыт, результат, периоды до сейчас (since, for, already, yet, recently).
+Global temperatures ___ by about 1°C since 1900.|rose;have risen;are rising|1|Since + момент в прошлом → Present Perfect.|Дата 1900 провоцирует Past Simple, но since требует Perfect.
+The company ___ in 1998.|has been founded;was founded;is founded|1|Конкретная дата → Past Simple.|—
+I ___ to London three times.|went;have been;was|1|Опыт без указания времени → Present Perfect.|went требует указания времени.
+The figure ___ steadily between 2000 and 2010.|has increased;increased;increases|1|Законченный период в прошлом (Task 1) → Past Simple.|between … and — уже закончилось.
+She ___ here for five years and still enjoys it.|worked;has worked;works|1|For + период до сейчас → Present Perfect.|—
+Two years ago, the government ___ a new law.|has introduced;introduced;introduces|1|Ago → Past Simple.|—
+Recently, many cities ___ cars from their centres.|banned;have banned;ban|1|Recently → чаще Present Perfect.|—
+#Условные предложения|Zero: If + Present, Present (факты). First: If + Present, will (реальное будущее). Second: If + Past, would (нереальное настоящее). Third: If + Past Perfect, would have + V3 (нереальное прошлое). После if не ставится will.
+If governments ___ more in education, crime would fall.|invest;invested;will invest|1|Would во второй части → Second Conditional: If + Past.|—
+If I ___ harder, I would have passed.|studied;had studied;would study|1|Would have → Third Conditional.|—
+If it ___ tomorrow, we will stay at home.|will rain;rains;rained|1|После if — Present, не will.|«will rain» — очень частая ошибка.
+If you heat ice, it ___.|melts;would melt;will have melted|0|Научный факт → Zero Conditional.|—
+Unless people ___ their habits, pollution will increase.|change;will change;changed|0|Unless = if not, Present.|—
+If I were you, I ___ apply for that job.|will;would;am|1|If I were you — совет, Second Conditional.|—
+Had the city invested earlier, the problem ___ avoided.|would be;would have been;will be|1|Инверсия Had … = If … had → Third Conditional.|—
+#Пассивный залог|be + V3. Используется, когда важно действие, а не исполнитель — очень полезен в Task 1 (процессы) и академическом стиле.
+The raw materials ___ to the factory by truck.|transport;are transported;are transporting|1|Процесс: материалы перевозят → пассив.|—
+The bridge ___ in 1890.|built;was built;has built|1|Пассив, прошедшее время.|«built» без was — ошибка.
+A new hospital ___ at the moment.|is built;is being built;has built|1|Сейчас в процессе → Present Continuous Passive.|—
+More money should ___ on public transport.|spend;be spent;spent|1|Modal + be + V3.|—
+It ___ that the climate is changing faster than expected.|believes;is believed;believed|1|It is believed that — безличный пассив.|—
+The results ___ next week.|will announce;will be announced;announce|1|Будущее пассив.|—
+#Relative clauses|who — люди, which — вещи, that — оба (только в определяющих). whose — чей. where — место. В неопределяющих (с запятыми) that нельзя.
+Students ___ work part-time often get lower grades.|which;who;whose|1|Люди → who.|—
+London, ___ is the capital of the UK, is very expensive.|that;which;who|1|Неопределяющее (с запятыми) → which, не that.|that после запятой — ошибка.
+The town ___ I grew up has changed a lot.|which;where;who|1|Место + подлежащее после → where.|which требует предлога: in which.
+A child ___ parents read to him learns faster.|who;whose;which|1|Принадлежность → whose.|—
+This is the reason ___ many people leave rural areas.|why;which;where|0|The reason why.|—
+#Согласование подлежащего и сказуемого|Глагол согласуется с главным существительным: The number of students IS…, A number of students ARE…, Everyone IS…, People ARE…, Information IS.
+The number of tourists ___ increased.|have;has;are|1|The number — единственное.|«tourists» рядом — ловушка.
+A number of problems ___ been identified.|has;have;is|1|A number of = много → множественное.|—
+Everyone ___ the right to education.|have;has;are|1|Everyone — единственное.|—
+The police ___ investigating the case.|is;are;has|1|Police — всегда множественное.|—
+Neither the teacher nor the students ___ happy.|was;were;is|1|Neither…nor — по ближайшему (students).|—
+The information in these reports ___ useful.|are;is;were|1|Information — неисчисляемое.|reports рядом — ловушка.
+#Исчисляемые / неисчисляемые|Неисчисляемые (information, advice, research, evidence, knowledge, equipment, furniture, traffic, money) не имеют мн. ч. и a/an. many/few — исчисляемые; much/little — неисчисляемые; fewer vs less.
+There is ___ evidence that sugar is harmful.|many;much;a lot|1|Evidence — неисчисляемое → much.|«a lot» требует of.
+She gave me some useful ___.|advices;advice;an advice|1|Advice — неисчисляемое.|—
+___ people use public transport than ten years ago.|Less;Fewer;Little|1|People — исчисляемое → fewer.|less people — частая ошибка.
+We need more ___ on this topic.|researches;research;a research|1|Research — неисчисляемое.|—
+There was heavy ___ this morning.|traffics;traffic;a traffic|1|Traffic — неисчисляемое.|—
+#Предлоги и коллокации|Запоминайте устойчивые сочетания: depend on, focus on, result in, lead to, contribute to, responsible for, interested in, impact on, solution to.
+Success depends ___ hard work.|of;on;from|1|Depend on.|depend of — калька с русского.
+Smoking can lead ___ serious diseases.|to;for;in|0|Lead to.|—
+Cars have a negative impact ___ air quality.|to;on;for|1|Impact on.|—
+There is no easy solution ___ this problem.|for;to;of|1|Solution to.|—
+Parents are responsible ___ their children's safety.|of;for;to|1|Responsible for.|—
+Pollution results ___ health problems.|to;in;from|1|Result in (приводит к); result from (является следствием).|result from — противоположный смысл.
+#Сравнения|-er/more для сравнения двух; the -est/most — превосходная. as … as. Не используйте more + -er.
+Living in a city is ___ than living in the countryside.|more expensive;expensiver;most expensive|0|Длинное прилагательное → more.|—
+This is ___ problem we face.|the most serious;the more serious;most serious|0|Превосходная степень с the.|—
+Online courses are ___ than traditional ones.|more cheaper;cheaper;more cheap|1|Короткое → -er; «more cheaper» — двойная степень.|—
+The figure was twice ___ high as in 2000.|as;so;than|0|Twice as … as.|—
+The ___ you practise, the better you become.|much;more;most|1|The more…, the better…|—
+#Связки: although / despite / however|Although + предложение; despite/in spite of + существительное/-ing; however — в начале предложения с запятой. Because + предложение; because of + существительное.
+___ the rain, we went out.|Although;Despite;However|1|После пропуска — существительное → despite.|Although требует подлежащее + глагол.
+___ it was expensive, they bought it.|Despite;Although;In spite of|1|Полное предложение → although.|—
+Cars are convenient. ___, they pollute the air.|Although;However;Despite|1|Новое предложение + запятая → However.|—
+Flights were cancelled ___ the storm.|because;because of;although|1|Существительное → because of.|—
+Despite ___ tired, she kept working.|being;she was;be|0|Despite + -ing.|despite she was — ошибка.
+#Герундий и инфинитив|После enjoy, avoid, consider, suggest, mind, admit — -ing. После want, decide, plan, hope, refuse, afford — to + V. Stop/remember/try меняют смысл.
+Many people avoid ___ fast food.|to eat;eating;eat|1|Avoid + -ing.|—
+The government decided ___ taxes.|raising;to raise;raise|1|Decide + to.|—
+I suggest ___ public transport.|to use;using;use|1|Suggest + -ing (или that…).|suggest to use — ошибка.
+He stopped ___ to answer the phone.|to walk;walking;walk|0|Stop to do — остановился, чтобы сделать.|stopped walking = перестал идти.
+Students cannot afford ___ high fees.|paying;to pay;pay|1|Afford + to.|—
